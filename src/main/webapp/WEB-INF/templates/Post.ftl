@@ -1,3 +1,4 @@
+<#import "Comments.ftl" as comment>
 <style>
         .post-info-text {
             justify-content: space-between;
@@ -12,8 +13,15 @@
             width: 20%;
         }
         .post-info {
-            display: flex;
             width: 100%;
+            text-align: center;
+            align-content: center;
+            border-bottom: #0e1545 solid;
+            margin-bottom: 20px;
+        }
+        .comment-info {
+            border-bottom: #184521 solid;
+            margin-bottom: 10px ;
             text-align: center;
             align-content: center;
         }
@@ -51,6 +59,13 @@
                     ${dateOfPost}
             </section>
         </div>
+        <p>
+        <form name="comment" action="" method="post">
+            <button type="submit" id="id" value="${id}">Comment</button>
+        </form>
+    </div>
+    <div>
+        <@comment.comment></@comment.comment>
     </div>
     </body>
     </html>

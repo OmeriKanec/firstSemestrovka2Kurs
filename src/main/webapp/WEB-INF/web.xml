@@ -131,6 +131,14 @@
         <servlet-name>game</servlet-name>
         <url-pattern>/loggedin/game</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>createcomment</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.CreateCommentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createcomment</servlet-name>
+        <url-pattern>/loggedin/createcomment</url-pattern>
+    </servlet-mapping>
 
 
     <filter>
