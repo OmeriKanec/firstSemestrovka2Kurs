@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class UserPageServlet extends HttpServlet {
+public class MyUserPageServlet extends HttpServlet {
     UserDAOImpl userDAO;
     @Override
     public void init() {
@@ -22,13 +22,14 @@ public class UserPageServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String userName = req.getParameter("username");
-        User user = userDAO.getByUserName(userName);
+        User u = (User) req.getSession().getAttribute("user");
+        User user = userDAO.getByUserName(u.getUserName());
         HashMap map = new HashMap<>();
         map.put("username", user.getUserName());
         map.put("bio", user.getBio());
         map.put("profilePicture", user.getProfilePicture());
-        Template template = FreemarkerConfigSingleton.getCfg().getTemplate("./UserPage.ftl");
+        map.put("email", user.getEmail());
+        Template template = FreemarkerConfigSingleton.getCfg().getTemplate("./MyUserPage.ftl");
         resp.setContentType("text/html");
         try {
             template.process(map, resp.getWriter());

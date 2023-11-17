@@ -43,6 +43,54 @@
         <servlet-name>userlist</servlet-name>
         <url-pattern>/loggedin/userlist</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>myuserpage</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.MyUserPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>myuserpage</servlet-name>
+        <url-pattern>/loggedin/myuserpage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>changeinfo</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.ChangeInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>changeinfo</servlet-name>
+        <url-pattern>/loggedin/change</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>createpost</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.CreatePostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createpost</servlet-name>
+        <url-pattern>/loggedin/createpost</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>posts</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.PostsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>posts</servlet-name>
+        <url-pattern>/loggedin/posts</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>post</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.PostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>post</servlet-name>
+        <url-pattern>/loggedin/post</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>searchusers</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.AjaxUserSearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>searchusers</servlet-name>
+        <url-pattern>/loggedin/search</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>loggedInFilter</filter-name>

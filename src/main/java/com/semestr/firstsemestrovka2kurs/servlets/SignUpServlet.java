@@ -65,7 +65,7 @@ public class SignUpServlet extends HttpServlet {
         userDAO.create(user);
         HttpSession session = req.getSession();
         session.setAttribute("user", user);
-        resp.sendRedirect("/loggedin/userpage?username="+user.getUserName());
+        resp.sendRedirect("/loggedin/myuserpage");
         }
 }
 

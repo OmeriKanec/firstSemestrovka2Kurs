@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
         if (user != null){
             if (user.getPassword().equals(password)){
                 session.setAttribute("user", user);
-                resp.sendRedirect("loggedin/userpage?username="+user.getUserName());
+                resp.sendRedirect("loggedin/myuserpage");
             }else {
                 resp.sendRedirect("/login");
             }

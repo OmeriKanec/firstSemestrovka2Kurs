@@ -1,18 +1,18 @@
 <style>
-    .user-info-text {
+    .post-info-text {
         justify-content: space-between;
         align-items: center;
         text-align: center;
         margin-left: 30%;
     }
-    .profilePicture {
+    .poster-info {
         display: flex;
         justify-content: left;
         align-items: flex-start;
         text-align: left;
         width: 20%;
     }
-    .user-info {
+    .post-info {
         display: flex;
         width: 100%;
         text-align: center;
@@ -33,27 +33,25 @@
 </head>
 <body>
 <#include "Menu.ftl">
-<p><label for="query">Search</label>
-<input id="query"/></p>
-<div class="users">
-<#list users as user>
-    <div class="user-info" onclick="location.href='userpage?username=${user.userName}'">
-        <img class="profilePicture" src="${user.profilePicture!"../static/pictures/vod.jpg"}" alt="profilePicture">
-        <div class="user-info-text">
+<#list posts as post>
+    <div class="post-info" onclick="location.href='post?id=${post.id}'">
+        <div class="poster-info">
             <section>
-                <p>Username:
-                    ${user.userName}
+                <p>Posted by:
+                    ${post.posterName}
+            </section>
+        </div>
+        <div class="post-info-text">
+            <section>
+                <p>Theme:
+                    ${post.name}
             </section>
             <section>
-                <p>Bio:
-                    ${user.bio!"none"}
+                <p>
+                    ${post.dateOfPost}
             </section>
         </div>
     </div>
 </#list>
-</div>
 </body>
-<script type="module" src="../../static/js/search.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </html>
-

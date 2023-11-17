@@ -51,6 +51,31 @@ public class UserDAOImpl implements DAO<User> {
 
     }
 
+    public List<User> getByLikePattern(String pattern) {
+        try {
+            PreparedStatement statement = JDBCConnection.getConn().prepareStatement(
+                    "select * from users where users.username like ?"
+            );
+            statement.setString(1, "%" + pattern + "%");
+            List<User> users = new ArrayList<>();
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                User u = new User(rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("email"),
+                        rs.getString("profilepicture"),
+                        rs.getString("bio"),
+                        rs.getLong("id"));
+                users.add(u);
+            }
+            return users;
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+        return null;
+    }
+
     public User getByEmail(String email) {
         try {
             PreparedStatement statement = JDBCConnection.getConn().prepareStatement(
@@ -100,13 +125,12 @@ public class UserDAOImpl implements DAO<User> {
     @Override
     public void update(User u) {
         try {
-            PreparedStatement statement = JDBCConnection.getConn().prepareStatement("update users set email = ?, username = ?, password = ?, profilepicture = ?, bio = ? where id = ?");
+            PreparedStatement statement = JDBCConnection.getConn().prepareStatement("update users set email = ?, username = ?, profilepicture = ?, bio = ? where id = ?");
             statement.setString(1, u.getEmail());
             statement.setString(2, u.getUserName());
-            statement.setString(3, u.getPassword());
-            statement.setString(4, u.getProfilePicture());
-            statement.setString(5, u.getBio());
-            statement.setLong(6, u.getId());
+            statement.setString(3, u.getProfilePicture());
+            statement.setString(4, u.getBio());
+            statement.setLong(5, u.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -1,4 +1,4 @@
-<#macro content></#macro>
+<#macro page>
 <style>
     .user-info-text {
         justify-content: space-between;
@@ -39,12 +39,14 @@
         <p>Username:
         ${username}
     </section>
-    <@content></@content>
     <section>
         <p>Bio:
         ${bio!"none"}
     </section>
+        <#nested>
     </div>
 </div>
 </body>
 </html>
+</#macro>
+<@page></@page>
