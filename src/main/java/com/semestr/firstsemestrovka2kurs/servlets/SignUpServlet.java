@@ -9,9 +9,7 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.regex.Matcher;
@@ -27,7 +25,6 @@ public class SignUpServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Template tmpl = FreemarkerConfigSingleton.getCfg().getTemplate("./SignUp.ftl");
-
         response.setContentType("text/html");
         try {
             tmpl.process(null, response.getWriter());
@@ -40,6 +37,17 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        if (req.getParameter("rememberMe") != null) {
+            if (req.getParameter("rememberMe").equals("on")) {
+                Cookie passwordCookie = new Cookie("password", password);
+                Cookie emailCookie = new Cookie("email", email);
+                Cookie rememberMeCookie = new Cookie("rememberMe", "on");
+                resp.addCookie(emailCookie);
+                resp.addCookie(passwordCookie);
+                resp.addCookie(rememberMeCookie);
+            }
+        }
+        System.out.println();
         if (!Validator.validateEmail(email) || !Validator.validatePassword(password)){
             PrintWriter out = resp.getWriter();
             out.write("invalid input");
@@ -48,7 +56,16 @@ public class SignUpServlet extends HttpServlet {
         password = PasswordHasher.hash(req.getParameter("password"));
         User user = new User(req.getParameter("username"), password, email);
         UserDAOImpl userDAO = new UserDAOImpl();
+        if (userDAO.getByUserName(user.getUserName()) != null){
+            resp.getWriter().write("bruh");
+        }
+        if (userDAO.getByEmail(user.getEmail()) != null){
+            resp.getWriter().write("kek");
+        }
         userDAO.create(user);
+        HttpSession session = req.getSession();
+        session.setAttribute("user", user);
+        resp.sendRedirect("/loggedin/userpage?username="+user.getUserName());
         }
 }
 

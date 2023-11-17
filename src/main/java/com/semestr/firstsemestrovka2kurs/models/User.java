@@ -6,6 +6,7 @@ public class User {
     private String email;
     private String profilePicture;
     private String bio;
+    private long id;
     public User (String userName, String password, String email){
         this.userName = userName;
         this.email = email;
@@ -32,6 +33,10 @@ public class User {
         return bio;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -42,6 +47,10 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setProfilePicture(String profilePicture) {
@@ -58,5 +67,14 @@ public class User {
         this.email = email;
         this.profilePicture = profilePicture;
         this.bio = bio;
+    }
+
+    public User(String userName, String password, String email, String profilePicture, String bio, long id) {
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.profilePicture = profilePicture;
+        this.bio = bio;
+        this.id = id;
     }
 }

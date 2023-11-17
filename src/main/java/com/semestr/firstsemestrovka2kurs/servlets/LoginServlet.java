@@ -31,9 +31,35 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        if (req.getParameter("rememberMe") != null) {
+            if (req.getParameter("rememberMe").equals("on")) {
+                Cookie passwordCookie = new Cookie("password", password);
+                Cookie emailCookie = new Cookie("email", email);
+                Cookie rememberMeCookie = new Cookie("rememberMe", "on");
+                resp.addCookie(emailCookie);
+                resp.addCookie(passwordCookie);
+                resp.addCookie(rememberMeCookie);
+            }
+        } else {
+            Cookie[] cookies = req.getCookies();
+            for (Cookie c: cookies) {
+                if (c.getName().equals("email")){
+                    c.setMaxAge(0);
+                    resp.addCookie(c);
+                }
+                if (c.getName().equals("password")){
+                    c.setMaxAge(0);
+                    resp.addCookie(c);
+                }
+                if (c.getName().equals("on")){
+                    c.setMaxAge(0);
+                    resp.addCookie(c);
+                }
+            }
+        }
         if (!Validator.validateEmail(email) || !Validator.validatePassword(password)){
             PrintWriter out = resp.getWriter();
             out.write("invalid input");
@@ -42,11 +68,13 @@ public class LoginServlet extends HttpServlet {
         password = PasswordHasher.hash(req.getParameter("password"));
         UserDAOImpl userDAO = new UserDAOImpl();
         User user = userDAO.getByEmail(email);
+        HttpSession session = req.getSession();
         if (user != null){
             if (user.getPassword().equals(password)){
-                System.out.println("in");
+                session.setAttribute("user", user);
+                resp.sendRedirect("loggedin/userpage?username="+user.getUserName());
             }else {
-                
+                resp.sendRedirect("/login");
             }
         }
    }

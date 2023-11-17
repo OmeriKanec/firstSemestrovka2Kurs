@@ -19,5 +19,38 @@
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>userpage</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.UserPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userpage</servlet-name>
+        <url-pattern>/loggedin/userpage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.LogOutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/loggedin/logout</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>userlist</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.UserListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userlist</servlet-name>
+        <url-pattern>/loggedin/userlist</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>loggedInFilter</filter-name>
+        <filter-class>com.semestr.firstsemestrovka2kurs.servlets.LoggedInFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loggedInFilter</filter-name>
+        <url-pattern>/loggedin/*</url-pattern>
+    </filter-mapping>
 
 </web-app>
