@@ -48,6 +48,7 @@
 </body>
 <script type="module" src="./static/js/validation.js"></script>
 <script type="module" src="./static/js/rememberMe.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </html>
 </#macro>
 <@login "LogIn" "Log in" "signup" "Sign Up"></@login>

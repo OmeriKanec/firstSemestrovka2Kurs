@@ -31,3 +31,31 @@ userInfoForm.addEventListener('submit', (event) =>{
         alert('Заполните все поля правильными данными');
     }
 })
+userNameInput.addEventListener("input", (event) =>{
+    setTimeout(() => $.ajax({
+        url: "usernametaken",
+        method: "GET",
+        data: {"username": userNameInput.value},
+        dataType: "json",
+        success: (data) => {
+            if (data){
+                alert("Username already taken")
+            }
+        }
+    }), 1500)
+})
+
+emailInput.addEventListener("input", (event) =>{
+    setTimeout(() => $.ajax({
+        url: "emailtaken",
+        method: "GET",
+        data: {"email": emailInput.value},
+        dataType: "json",
+        success: (data) => {
+            if (data){
+                alert("Email already in use")
+            }
+        }
+    }), 1500)
+})
+

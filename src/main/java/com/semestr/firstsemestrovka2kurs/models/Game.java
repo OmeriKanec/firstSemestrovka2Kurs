@@ -21,6 +21,15 @@ public class Game {
         this.creatorid = creatorid;
     }
 
+    public Game(String name, String genre, LocalDate dateOfRelise, String developer, String publisher, long creatorid) {
+        this.name = name;
+        this.genre = genre;
+        this.dateOfRelise = dateOfRelise;
+        this.developer = developer;
+        this.publisher = publisher;
+        this.creatorid = creatorid;
+    }
+
     public Game(long id, String name) {
         this.id = id;
         this.name = name;

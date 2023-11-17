@@ -20,5 +20,7 @@ text-decoration: none;
     <a class="myuserpage" href="myuserpage">My page</a>
     <a class="createpost" href="createpost">Create post</a>
     <a class="posts" href="posts">Posts</a>
+    <a class="creategame" href="creategame">Add game</a>
+    <a class="games" href="games">Games</a>
     <a class="logout" href="logout">Log out</a>
 </div>

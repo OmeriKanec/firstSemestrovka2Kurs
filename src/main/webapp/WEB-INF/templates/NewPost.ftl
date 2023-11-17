@@ -2,12 +2,14 @@
     body {
         background-color: black;
         color: white;
+
+    }
+    .content {
         text-align: center;
         align-items: center;
         display: flex;
         justify-content: center;
     }
-
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +18,8 @@
     <title>New post</title>
 </head>
 <body>
-<div>
+<#include "Menu.ftl">
+<div class="content">
     <form action='' method='post' id="postForm">
         <div>
             <label for='name'>Name of post</label>

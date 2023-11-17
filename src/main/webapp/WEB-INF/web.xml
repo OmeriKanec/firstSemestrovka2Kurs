@@ -91,6 +91,47 @@
         <servlet-name>searchusers</servlet-name>
         <url-pattern>/loggedin/search</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>usernametaken</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.AjaxCheckIfUsernameAlreadyTakenServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>usernametaken</servlet-name>
+        <url-pattern>/usernametaken</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>emailtaken</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.AjaxCheckIfEmailAlreadyTakenServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>emailtaken</servlet-name>
+        <url-pattern>/emailtaken</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>creategame</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.CreateGamePageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>creategame</servlet-name>
+        <url-pattern>/loggedin/creategame</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>games</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.GamesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>games</servlet-name>
+        <url-pattern>/loggedin/games</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>game</servlet-name>
+        <servlet-class>com.semestr.firstsemestrovka2kurs.servlets.GameServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>game</servlet-name>
+        <url-pattern>/loggedin/game</url-pattern>
+    </servlet-mapping>
+
 
     <filter>
         <filter-name>loggedInFilter</filter-name>
